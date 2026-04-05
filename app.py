@@ -4,513 +4,556 @@ from datetime import datetime
 # Page configuration
 st.set_page_config(
     page_title="Dr. Niyas N - Research Portfolio",
-    page_icon="📊",
+    page_icon="🎓",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for professional styling
+# Enhanced Custom CSS with gradient backgrounds and modern styling
 st.markdown("""
     <style>
+    /* Main background gradient */
     .main {
-        padding: 2rem;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+        padding: 0;
     }
-    .stButton>button {
-        width: 100%;
-        background-color: #1f77b4;
+    
+    /* Remove default padding */
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        max-width: 1400px;
+    }
+    
+    /* Hero section */
+    .hero-section {
+        background: linear-gradient(135deg, rgba(30, 60, 114, 0.95) 0%, rgba(126, 34, 206, 0.95) 100%);
+        padding: 3rem 2rem;
+        border-radius: 20px;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hero-title {
         color: white;
-        border-radius: 5px;
-        padding: 0.5rem 1rem;
-        font-weight: 500;
-        border: none;
-        transition: all 0.3s;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
-    .stButton>button:hover {
-        background-color: #155a8a;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .app-card {
-        background-color: #f8f9fa;
-        padding: 1.5rem;
-        border-radius: 10px;
-        border-left: 4px solid #1f77b4;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .category-header {
-        color: #1f77b4;
+    
+    .hero-subtitle {
+        color: rgba(255, 255, 255, 0.9);
         font-size: 1.3rem;
-        font-weight: 600;
-        margin-top: 2rem;
+        font-weight: 400;
         margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid #1f77b4;
     }
-    .tech-tag {
+    
+    .hero-description {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: 900px;
+    }
+    
+    /* Stats cards */
+    .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .stat-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        backdrop-filter: blur(10px);
+        padding: 2rem 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #a78bfa;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    /* App cards */
+    .app-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .app-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(126, 34, 206, 0.4);
+        border: 1px solid rgba(167, 139, 250, 0.4);
+    }
+    
+    .app-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .app-title {
+        color: white;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    
+    .app-description {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Feature tags */
+    .feature-tag {
         display: inline-block;
-        background-color: #e9ecef;
-        color: #495057;
-        padding: 0.25rem 0.75rem;
-        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(167, 139, 250, 0.3) 0%, rgba(126, 34, 206, 0.3) 100%);
+        color: #e9d5ff;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
         font-size: 0.85rem;
         margin-right: 0.5rem;
         margin-bottom: 0.5rem;
+        border: 1px solid rgba(167, 139, 250, 0.3);
+        font-weight: 500;
     }
+    
+    /* Status badge */
     .status-badge {
         display: inline-block;
-        padding: 0.25rem 0.75rem;
-        border-radius: 12px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
         font-size: 0.85rem;
-        font-weight: 500;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+    
+    /* Buttons */
+    .stButton>button {
+        width: 100%;
+        background: linear-gradient(135deg, #7e22ce 0%, #a78bfa 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 0.8rem 2rem;
+        font-weight: 600;
+        font-size: 1.05rem;
+        border: none;
+        box-shadow: 0 6px 20px rgba(126, 34, 206, 0.4);
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+    }
+    
+    .stButton>button:hover {
+        background: linear-gradient(135deg, #6b21a8 0%, #8b5cf6 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(126, 34, 206, 0.6);
+    }
+    
+    /* Section headers */
+    .section-header {
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 3rem 0 2rem 0;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid rgba(167, 139, 250, 0.5);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Contact section */
+    .contact-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+    }
+    
+    .contact-icon {
+        font-size: 2rem;
         margin-bottom: 0.5rem;
     }
-    .status-production {
-        background-color: #d4edda;
-        color: #155724;
+    
+    .contact-text {
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
     }
-    .status-beta {
-        background-color: #fff3cd;
-        color: #856404;
+    
+    .contact-detail {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+    }
+    
+    /* Publication card */
+    .pub-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid #a78bfa;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Tech stack */
+    .tech-stack {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 2rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Hide Streamlit branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.2);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #7e22ce 0%, #a78bfa 100%);
+        border-radius: 10px;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Header Section
+# ============================================
+# HERO SECTION
+# ============================================
+
+st.markdown("""
+    <div class="hero-section">
+        <div class="hero-title">🎓 Dr. Niyas N</div>
+        <div class="hero-subtitle">Ph.D. in Corporate Finance | Empirical Researcher | Data Scientist</div>
+        <div class="hero-description">
+            Institutional-grade research platforms & data analytics tools for ESG analysis, 
+            corporate finance, and quantitative research — built for academics, researchers, and financial professionals.
+        </div>
+    </div>
+""", unsafe_allow_html=True)
+
+# ============================================
+# STATS SECTION
+# ============================================
+
+st.markdown("""
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Production Apps</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Publications</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">4,500+</div>
+            <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">Real-time</div>
+            <div class="stat-label">Data Processing</div>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
+
+st.markdown("<div class='section-header'>🌱 Research & ESG Analytics</div>", unsafe_allow_html=True)
+
+# ============================================
+# ESG DASHBOARD
+# ============================================
+
 col1, col2 = st.columns([3, 1])
 
 with col1:
-    st.title("Dr. Niyas N")
-    st.subheader("Research Portfolio & Data Analytics Platforms")
     st.markdown("""
-    **Ph.D. in Corporate Finance | Empirical Researcher | Data Scientist**
-    
-    Welcome to my portfolio of research tools and data analytics platforms. These applications 
-    demonstrate expertise in econometric analysis, data visualization, ESG research, and 
-    quantitative finance.
-    """)
-
-with col2:
-    st.markdown("""
-    **Contact Information**
-    
-    📧 niyaszukta@gmail.com
-    
-    📞 +91 7598 597 668
-    
-    🎓 Pondicherry Central University
-    
-    📍 Kerala, India
-    """)
-
-st.markdown("---")
-
-# About Section
-with st.expander("📄 About This Portfolio", expanded=False):
-    st.markdown("""
-    This portfolio showcases production-ready web applications developed to support:
-    - **Academic Research**: ESG analysis, corporate finance, empirical accounting
-    - **Data Analytics**: Large-scale dataset management, visualization, statistical modeling
-    - **Educational Tools**: Research writing, content development, academic productivity
-    - **Financial Analysis**: Valuation models, options analytics, market microstructure
-    
-    **Technical Expertise**: Python (Streamlit, pandas, plotly, scikit-learn), Statistical Software (STATA, SPSS, R), 
-    Cloud Deployment (Streamlit Cloud, Heroku), APIs, Database Management, Machine Learning
-    
-    **Research Focus**: ESG & Sustainability, Corporate Governance, Empirical Accounting, Corporate Finance, 
-    Brand Valuation, Intellectual Capital
-    """)
-
-st.markdown("---")
-
-# ============================================
-# CATEGORY 1: RESEARCH & ESG ANALYTICS
-# ============================================
-
-st.markdown('<div class="category-header">🌱 Research & ESG Analytics</div>', unsafe_allow_html=True)
-
-col1, col2 = st.columns([2, 1])
-
-with col1:
-    st.markdown("""
-    ### ESG Data Dashboard
-    
-    <span class="status-badge status-production">✓ Production</span>
-    
-    **Comprehensive ESG analytics platform for corporate sustainability research**
-    
-    **Features:**
-    - Real-time ESG scores and sustainability metrics tracking
-    - Environmental, Social, and Governance performance analysis
-    - Corporate sustainability reporting and disclosure quality assessment
-    - Interactive data visualizations for ESG research
-    - Cross-company and cross-sector comparative analysis
-    - Time-series analysis of ESG performance trends
-    
-    **Research Applications:**
-    - Empirical studies on ESG performance and firm value
-    - Corporate governance quality assessment
-    - Sustainability reporting transparency analysis
-    - ESG integration in investment decisions
-    
-    **Technical Stack:**
+        <div class="app-card">
+            <div class="app-icon">🌍</div>
+            <div class="status-badge">✓ Production</div>
+            <div class="app-title">ESG Data Dashboard</div>
+            <div class="app-description">
+                Comprehensive ESG analytics platform for corporate sustainability research. 
+                Real-time ESG scores, sustainability metrics tracking, and interactive visualizations 
+                for empirical studies on ESG performance and firm value.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">📊 ESG Metrics</span>
+                <span class="feature-tag">🏢 Corporate Data</span>
+                <span class="feature-tag">📈 Trend Analysis</span>
+                <span class="feature-tag">🔄 Real-time</span>
+            </div>
+        </div>
     """, unsafe_allow_html=True)
-    
-    st.markdown(
-        '<span class="tech-tag">Python</span>'
-        '<span class="tech-tag">Streamlit</span>'
-        '<span class="tech-tag">Pandas</span>'
-        '<span class="tech-tag">Plotly</span>'
-        '<span class="tech-tag">APIs</span>',
-        unsafe_allow_html=True
-    )
 
 with col2:
-    st.markdown("**Launch Application:**")
-    if st.button("🚀 Open ESG Dashboard", key="esg"):
-        st.markdown("**[Click here to access ESG Dashboard](https://dfhbtg9dngtbmyqkcnufcy.streamlit.app/)**")
-    
-    st.markdown("---")
-    st.markdown("**Users:** 500+ researchers")
-    st.markdown("**Status:** Actively maintained")
-    st.markdown("**Use Case:** Academic research, ESG analysis, sustainability reporting")
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🚀 Launch ESG Dashboard", key="esg"):
+        st.markdown("### [Access ESG Dashboard →](https://dfhbtg9dngtbmyqkcnufcy.streamlit.app/)")
 
 st.markdown("---")
 
+st.markdown("<div class='section-header'>💼 Corporate Finance & Valuation</div>", unsafe_allow_html=True)
+
 # ============================================
-# CATEGORY 2: CORPORATE FINANCE & VALUATION
+# VALUATION TOOL
 # ============================================
 
-st.markdown('<div class="category-header">💼 Corporate Finance & Valuation Tools</div>', unsafe_allow_html=True)
-
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([3, 1])
 
 with col1:
     st.markdown("""
-    ### Corporate Valuation Screener
-    
-    <span class="status-badge status-production">✓ Production</span>
-    
-    **Advanced valuation toolkit for fundamental analysis and firm valuation**
-    
-    **Features:**
-    - Discounted Cash Flow (DCF) valuation models
-    - Comparable company analysis and multiples valuation
-    - Scenario analysis and sensitivity testing
-    - Financial ratio analysis and performance metrics
-    - Industry benchmark comparisons
-    - Intrinsic value calculation with multiple methodologies
-    - Dividend discount models (DDM)
-    
-    **Research Applications:**
-    - Corporate finance research and firm valuation studies
-    - Brand value and intangible asset valuation
-    - M&A analysis and acquisition pricing
-    - Investment decision support
-    
-    **Technical Stack:**
+        <div class="app-card">
+            <div class="app-icon">💰</div>
+            <div class="status-badge">✓ Production</div>
+            <div class="app-title">Corporate Valuation Screener</div>
+            <div class="app-description">
+                Advanced valuation toolkit with DCF models, comparable analysis, and scenario testing. 
+                Professional-grade fundamental analysis for corporate finance research, 
+                M&A analysis, and investment decisions.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">💵 DCF Models</span>
+                <span class="feature-tag">📊 Multiples</span>
+                <span class="feature-tag">🎯 Scenarios</span>
+                <span class="feature-tag">📈 Benchmarks</span>
+            </div>
+        </div>
     """, unsafe_allow_html=True)
-    
-    st.markdown(
-        '<span class="tech-tag">Python</span>'
-        '<span class="tech-tag">Financial Modeling</span>'
-        '<span class="tech-tag">DCF</span>'
-        '<span class="tech-tag">Valuation</span>'
-        '<span class="tech-tag">Streamlit</span>',
-        unsafe_allow_html=True
-    )
 
 with col2:
-    st.markdown("**Launch Application:**")
-    if st.button("🚀 Open Valuation Tool", key="valuation"):
-        st.markdown("**[Click here to access Valuation Screener](https://value-screeners-wvdrespkw4jjbv2m6pauva.streamlit.app/)**")
-    
-    st.markdown("---")
-    st.markdown("**Users:** 800+ analysts")
-    st.markdown("**Status:** Actively maintained")
-    st.markdown("**Use Case:** Fundamental analysis, academic research, investment decisions")
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🚀 Launch Valuation Tool", key="valuation"):
+        st.markdown("### [Access Valuation Tool →](https://value-screeners-wvdrespkw4jjbv2m6pauva.streamlit.app/)")
 
 st.markdown("---")
 
+st.markdown("<div class='section-header'>📈 Quantitative Finance & Derivatives</div>", unsafe_allow_html=True)
+
 # ============================================
-# CATEGORY 3: QUANTITATIVE FINANCE & DERIVATIVES
+# GEX ANALYTICS
 # ============================================
 
-st.markdown('<div class="category-header">📈 Quantitative Finance & Options Analytics</div>', unsafe_allow_html=True)
-
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([3, 1])
 
 with col1:
     st.markdown("""
-    ### GEX Pro - Options Analytics Platform
-    
-    <span class="status-badge status-production">✓ Production</span>
-    
-    **Advanced options analytics and market microstructure analysis**
-    
-    **Features:**
-    - Gamma Exposure (GEX) analysis and visualization
-    - Options flow and dealer positioning analytics
-    - Implied volatility surface modeling
-    - Greeks calculation (Delta, Gamma, Vega, Theta, Rho)
-    - Market maker hedging flow analysis
-    - Support/resistance level identification from options data
-    - Real-time options chain analysis
-    
-    **Research Applications:**
-    - Market microstructure research
-    - Volatility forecasting and modeling
-    - Derivatives pricing studies
-    - Behavioral finance and investor sentiment analysis
-    - Liquidity provision and market making studies
-    
-    **Technical Stack:**
+        <div class="app-card">
+            <div class="app-icon">⚡</div>
+            <div class="status-badge">✓ Production</div>
+            <div class="app-title">GEX Pro - Options Analytics Platform</div>
+            <div class="app-description">
+                Institutional-grade Gamma Exposure (GEX) analytics, VANNA cascade mathematics, 
+                and dealer flow analysis. Advanced options analytics for market microstructure 
+                research and quantitative trading strategies.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">⚡ GEX Analysis</span>
+                <span class="feature-tag">📊 Greeks</span>
+                <span class="feature-tag">🎲 Vol Surface</span>
+                <span class="feature-tag">🔄 Real-time</span>
+            </div>
+        </div>
     """, unsafe_allow_html=True)
-    
-    st.markdown(
-        '<span class="tech-tag">Python</span>'
-        '<span class="tech-tag">Options Pricing</span>'
-        '<span class="tech-tag">Black-Scholes</span>'
-        '<span class="tech-tag">Real-time APIs</span>'
-        '<span class="tech-tag">Advanced Analytics</span>',
-        unsafe_allow_html=True
-    )
 
 with col2:
-    st.markdown("**Launch Application:**")
-    if st.button("🚀 Open GEX Analytics", key="gex"):
-        st.markdown("**[Click here to access GEX Pro](https://gex-pro-weekly-mgd7mz7quvkijbhmkv3bzl.streamlit.app/)**")
-    
-    st.markdown("---")
-    st.markdown("**Users:** 1,200+ traders & researchers")
-    st.markdown("**Status:** Actively maintained")
-    st.markdown("**Use Case:** Derivatives research, quantitative trading, market analysis")
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🚀 Launch GEX Analytics", key="gex"):
+        st.markdown("### [Access GEX Pro →](https://gex-pro-weekly-mgd7mz7quvkijbhmkv3bzl.streamlit.app/)")
 
 st.markdown("---")
 
+st.markdown("<div class='section-header'>📚 Academic Research Tools</div>", unsafe_allow_html=True)
+
 # ============================================
-# CATEGORY 4: ACADEMIC RESEARCH TOOLS
+# RESEARCH WRITING PRO
 # ============================================
 
-st.markdown('<div class="category-header">📚 Academic Research & Writing Tools</div>', unsafe_allow_html=True)
-
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([3, 1])
 
 with col1:
     st.markdown("""
-    ### Zodha Research Writing Pro
-    
-    <span class="status-badge status-production">✓ Production</span>
-    
-    **AI-powered academic writing assistant for researchers and scholars**
-    
-    **Features:**
-    - AI-to-human content conversion for academic writing
-    - Grammar and style checking with academic standards
-    - Paraphrasing tool maintaining academic integrity
-    - Citation formatting and reference management support
-    - Plagiarism detection and originality enhancement
-    - Research paper structure optimization
-    - Academic tone and voice consistency checker
-    - Literature review assistance
-    
-    **Research Applications:**
-    - Manuscript preparation for journal submission
-    - Thesis and dissertation writing
-    - Research proposal development
-    - Grant application writing
-    - Conference paper preparation
-    
-    **Technical Stack:**
+        <div class="app-card">
+            <div class="app-icon">✍️</div>
+            <div class="status-badge">✓ Production</div>
+            <div class="app-title">Zodha Research Writing Pro</div>
+            <div class="app-description">
+                AI-powered academic writing assistant with grammar checking, paraphrasing, 
+                citation formatting, and plagiarism detection. Professional tool for manuscript 
+                preparation, thesis writing, and research productivity.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">🤖 AI Assistant</span>
+                <span class="feature-tag">✅ Grammar</span>
+                <span class="feature-tag">📝 Paraphrase</span>
+                <span class="feature-tag">📚 Citations</span>
+            </div>
+        </div>
     """, unsafe_allow_html=True)
-    
-    st.markdown(
-        '<span class="tech-tag">Python</span>'
-        '<span class="tech-tag">NLP</span>'
-        '<span class="tech-tag">AI/ML</span>'
-        '<span class="tech-tag">Groq API</span>'
-        '<span class="tech-tag">Streamlit</span>',
-        unsafe_allow_html=True
-    )
 
 with col2:
-    st.markdown("**Launch Application:**")
-    if st.button("🚀 Open Writing Pro", key="writing"):
-        st.markdown("**[Click here to access Research Writing Pro](https://zodha-ai-to-human-glmxvny4k7smzr6ww9fkaw.streamlit.app/)**")
-    
-    st.markdown("---")
-    st.markdown("**Users:** 2,000+ researchers")
-    st.markdown("**Status:** Actively maintained")
-    st.markdown("**Use Case:** Academic writing, research productivity, manuscript preparation")
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🚀 Launch Writing Pro", key="writing"):
+        st.markdown("### [Access Research Writing Pro →](https://zodha-ai-to-human-glmxvny4k7smzr6ww9fkaw.streamlit.app/)")
 
 st.markdown("---")
 
 # ============================================
-# TECHNICAL CAPABILITIES SUMMARY
+# TECHNICAL STACK
 # ============================================
 
-st.markdown('<div class="category-header">🛠️ Technical Capabilities</div>', unsafe_allow_html=True)
+st.markdown("<div class='section-header'>🛠️ Technical Capabilities</div>", unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.markdown("""
-    **Programming & Development**
-    - Python (Advanced)
-    - R (Intermediate)
-    - SQL (Advanced)
-    - STATA (Advanced)
-    - Git/GitHub
-    """)
-
-with col2:
-    st.markdown("""
-    **Data Science & Analytics**
-    - Pandas, NumPy, SciPy
-    - Scikit-learn, TensorFlow
-    - Plotly, Matplotlib, Seaborn
-    - Statistical modeling
-    - Machine Learning
-    """)
-
-with col3:
-    st.markdown("""
-    **Deployment & Infrastructure**
-    - Streamlit Cloud
-    - Heroku
-    - Docker (Basic)
-    - REST APIs
-    - Cloud platforms
-    """)
-
-st.markdown("---")
+st.markdown("""
+    <div class="tech-stack">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <div>
+                <div style="color: #a78bfa; font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">
+                    💻 Programming
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                    Python (Advanced)<br>
+                    R (Intermediate)<br>
+                    SQL (Advanced)<br>
+                    STATA (Advanced)<br>
+                    Git/GitHub
+                </div>
+            </div>
+            <div>
+                <div style="color: #a78bfa; font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">
+                    📊 Data Science
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                    pandas, NumPy, SciPy<br>
+                    Scikit-learn, TensorFlow<br>
+                    Plotly, Seaborn<br>
+                    Statistical Modeling<br>
+                    Machine Learning
+                </div>
+            </div>
+            <div>
+                <div style="color: #a78bfa; font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">
+                    ☁️ Deployment
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                    Streamlit Cloud<br>
+                    Heroku<br>
+                    Docker (Basic)<br>
+                    REST APIs<br>
+                    Cloud Platforms
+                </div>
+            </div>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 
 # ============================================
 # RESEARCH & PUBLICATIONS
 # ============================================
 
-st.markdown('<div class="category-header">📖 Research & Publications</div>', unsafe_allow_html=True)
+st.markdown("<div class='section-header'>📖 Selected Publications</div>", unsafe_allow_html=True)
 
 st.markdown("""
-**Selected Publications:**
-
-1. **Impact of Brand Value on Firm Profitability and Firm Value of Indian FMCG Companies**  
-   *IIMB Management Review*, Elsevier (ABDC B, Scopus, Web of Science)
-
-2. **Impact of Corporate Social Responsibility (CSR) on Brand Values of Reputed Banks in Asia**  
-   *Empirical Economic Letters* (ABDC C, Scopus)
-
-3. **The Nexus between Intellectual Capital Efficiency and Financial Brand Value**  
-   *Indian Journal of Industrial Relations* (ABDC C, Web of Science)
-
-4. **Intellectual Capital Efficiency and Financial Performance of IT Companies in India**  
-   *Asian Journal of Management* (UGC-CARE Listed)
-
-5. **Impact of Brand Value on Firm Performance of Pharmaceutical Brands in India**  
-   *VidyaBharati International Journal* (Web of Science)
-
-**Research Interests:**
-- ESG Performance & Corporate Financial Performance
-- Corporate Governance & Firm Value
-- Sustainability Reporting & Disclosure Quality
-- Intellectual Capital & Intangible Assets
-- Brand Valuation & Corporate Performance
-- Empirical Corporate Finance
-""")
-
-st.markdown("---")
+    <div class="pub-card">
+        <strong>Impact of Brand Value on Firm Profitability and Firm Value of Indian FMCG Companies</strong><br>
+        <em>IIMB Management Review</em>, Elsevier (ABDC B, Scopus, Web of Science)
+    </div>
+    <div class="pub-card">
+        <strong>Impact of Corporate Social Responsibility on Brand Values of Reputed Banks in Asia</strong><br>
+        <em>Empirical Economic Letters</em> (ABDC C, Scopus)
+    </div>
+    <div class="pub-card">
+        <strong>The Nexus between Intellectual Capital Efficiency and Financial Brand Value</strong><br>
+        <em>Indian Journal of Industrial Relations</em> (ABDC C, Web of Science)
+    </div>
+""", unsafe_allow_html=True)
 
 # ============================================
-# CURRENT RESEARCH PROJECTS
+# CONTACT SECTION
 # ============================================
 
-st.markdown('<div class="category-header">🔬 Current Research Projects</div>', unsafe_allow_html=True)
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("""
-    **ICSSR Sponsored Research**
-    
-    **Project:** Women's Workforce Participation and Financial Autonomy in Kerala
-    
-    **Grant:** INR 20,00,000 (USD ~24,000)
-    
-    **Role:** Principal Investigator
-    
-    **Scope:** Large-scale survey with 1,357 respondents across 5 districts
-    
-    **Methods:** SEM, CFA, Panel data analysis
-    """)
-
-with col2:
-    st.markdown("""
-    **Working Papers**
-    
-    1. **ESG Performance and Firm Value: Evidence from Indian Listed Companies**
-       - Panel data analysis (2018-2023)
-       - ESG scores from Bloomberg
-    
-    2. **Corporate Governance Quality and Financial Reporting Transparency**
-       - Cross-country analysis
-       - 500+ firms across 10 Asian countries
-    
-    3. **Sustainability Reporting and Cost of Capital**
-       - Instrumental variables approach
-       - Emerging markets focus
-    """)
-
-st.markdown("---")
-
-# ============================================
-# CONTACT & FOOTER
-# ============================================
-
-st.markdown('<div class="category-header">📬 Get in Touch</div>', unsafe_allow_html=True)
+st.markdown("<div class='section-header'>📬 Get in Touch</div>", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown("""
-    **Email**
-    
-    📧 niyaszukta@gmail.com
-    
-    Response time: Within 24 hours
-    """)
+        <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div class="contact-text">Email</div>
+            <div class="contact-detail">niyaszukta@gmail.com</div>
+        </div>
+    """, unsafe_allow_html=True)
 
 with col2:
     st.markdown("""
-    **Professional Profiles**
-    
-    🎓 Google Scholar: Available upon request
-    
-    🔬 ORCID: Available upon request
-    
-    💼 LinkedIn: Available upon request
-    """)
+        <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <div class="contact-text">Phone</div>
+            <div class="contact-detail">+91 7598 597 668</div>
+        </div>
+    """, unsafe_allow_html=True)
 
 with col3:
     st.markdown("""
-    **Collaboration**
-    
-    Open to:
-    - Research collaborations
-    - Consulting projects
-    - Academic positions
-    - Speaking engagements
-    """)
+        <div class="contact-card">
+            <div class="contact-icon">🎓</div>
+            <div class="contact-text">Institution</div>
+            <div class="contact-detail">Pondicherry Central University</div>
+        </div>
+    """, unsafe_allow_html=True)
 
-st.markdown("---")
+# ============================================
+# FOOTER
+# ============================================
 
-# Footer
+st.markdown("<br><br>", unsafe_allow_html=True)
+
 st.markdown(f"""
-    <div style='text-align: center; color: #6c757d; padding: 2rem 0; font-size: 0.9rem;'>
-        <p><strong>Dr. Niyas N</strong> | Ph.D. in Corporate Finance</p>
-        <p>Research Portfolio & Data Analytics Platforms</p>
-        <p>Last Updated: {datetime.now().strftime('%B %Y')}</p>
-        <p style='margin-top: 1rem; font-size: 0.85rem;'>
-            All applications are production-ready and actively maintained. 
+    <div style='text-align: center; color: rgba(255, 255, 255, 0.6); padding: 2rem 0; font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.1);'>
+        <p style='margin-bottom: 0.5rem;'><strong style='color: rgba(255, 255, 255, 0.9);'>Dr. Niyas N</strong> | Ph.D. in Corporate Finance</p>
+        <p style='margin-bottom: 0.5rem;'>Research Portfolio & Data Analytics Platforms</p>
+        <p style='margin-bottom: 1rem;'>Last Updated: {datetime.now().strftime('%B %Y')}</p>
+        <p style='font-size: 0.85rem;'>
+            All applications are production-ready and actively maintained.<br>
             For technical inquiries, collaboration opportunities, or access to source code, please contact via email.
         </p>
     </div>
