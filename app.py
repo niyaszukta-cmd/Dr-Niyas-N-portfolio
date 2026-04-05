@@ -633,32 +633,68 @@ with col4:
 
 st.markdown("<br><br>", unsafe_allow_html=True)
 
-st.markdown(f"""
-    <div style='text-align: center; color: rgba(255, 255, 255, 0.6); padding: 2rem 0; font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.1);'>
-        <p style='margin-bottom: 0.5rem;'><strong style='color: rgba(255, 255, 255, 0.9); font-size: 1.2rem;'>Dr. Niyas N</strong></p>
-        <p style='margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.8);'>Ph.D. in Corporate Finance | Founder, NYZTrade & Zodha Research</p>
-        <p style='margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.7);'>Pondicherry Central University, India</p>
-        
-        <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-            <a href="https://www.linkedin.com/in/drniyas/" target="_blank" style="color: #a78bfa; text-decoration: none; font-weight: 600;">
+# Footer content with proper escaping
+footer_html = f"""
+<div style='text-align: center; color: rgba(255, 255, 255, 0.6); padding: 2rem 0; font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.1);'>
+    <p style='margin-bottom: 0.5rem;'><strong style='color: rgba(255, 255, 255, 0.9); font-size: 1.2rem;'>Dr. Niyas N</strong></p>
+    <p style='margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.8);'>Ph.D. in Corporate Finance | Founder, NYZTrade & Zodha Research</p>
+    <p style='margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.7);'>Pondicherry Central University, India</p>
+</div>
+"""
+
+st.markdown(footer_html, unsafe_allow_html=True)
+
+# Social media buttons using Streamlit columns
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    st.markdown("""
+        <a href="https://www.linkedin.com/in/drniyas/" target="_blank" style="text-decoration: none;">
+            <div style="background: linear-gradient(135deg, #0077b5 0%, #005582 100%); color: white; padding: 0.8rem 1rem; border-radius: 10px; font-weight: 600; text-align: center; box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);">
                 💼 LinkedIn
-            </a>
-            <a href="https://www.youtube.com/@NYZTrade" target="_blank" style="color: #a78bfa; text-decoration: none; font-weight: 600;">
-                ▶️ YouTube (10K+)
-            </a>
-            <a href="https://www.instagram.com/nyztrade/" target="_blank" style="color: #a78bfa; text-decoration: none; font-weight: 600;">
+            </div>
+        </a>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
+        <a href="https://www.youtube.com/@NYZTrade" target="_blank" style="text-decoration: none;">
+            <div style="background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%); color: white; padding: 0.8rem 1rem; border-radius: 10px; font-weight: 600; text-align: center; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);">
+                ▶️ YouTube
+            </div>
+        </a>
+    """, unsafe_allow_html=True)
+
+with col3:
+    st.markdown("""
+        <a href="https://www.instagram.com/nyztrade/" target="_blank" style="text-decoration: none;">
+            <div style="background: linear-gradient(135deg, #E1306C 0%, #C13584 100%); color: white; padding: 0.8rem 1rem; border-radius: 10px; font-weight: 600; text-align: center; box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);">
                 📸 Instagram
-            </a>
-            <a href="mailto:niyaszukta@gmail.com" style="color: #a78bfa; text-decoration: none; font-weight: 600;">
+            </div>
+        </a>
+    """, unsafe_allow_html=True)
+
+with col4:
+    st.markdown("""
+        <a href="mailto:niyaszukta@gmail.com" style="text-decoration: none;">
+            <div style="background: linear-gradient(135deg, #7e22ce 0%, #a78bfa 100%); color: white; padding: 0.8rem 1rem; border-radius: 10px; font-weight: 600; text-align: center; box-shadow: 0 4px 15px rgba(126, 34, 206, 0.3);">
                 📧 Email
-            </a>
-        </div>
-        
-        <p style='margin-bottom: 0.5rem; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);'>Research Portfolio & Data Analytics Platforms</p>
-        <p style='margin-bottom: 1rem; font-size: 0.85rem;'>Last Updated: {datetime.now().strftime('%B %Y')}</p>
-        <p style='font-size: 0.85rem; color: rgba(255, 255, 255, 0.6);'>
-            All applications are production-ready and actively maintained.<br>
-            For technical inquiries, collaboration opportunities, or access to source code, please contact via email.
-        </p>
-    </div>
-""", unsafe_allow_html=True)
+            </div>
+        </a>
+    """, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Final footer text
+final_footer = f"""
+<div style='text-align: center; color: rgba(255, 255, 255, 0.6); padding: 1rem 0; font-size: 0.9rem;'>
+    <p style='margin-bottom: 0.5rem; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);'>Research Portfolio & Data Analytics Platforms</p>
+    <p style='margin-bottom: 1rem; font-size: 0.85rem;'>Last Updated: {datetime.now().strftime('%B %Y')}</p>
+    <p style='font-size: 0.85rem; color: rgba(255, 255, 255, 0.6);'>
+        All applications are production-ready and actively maintained.<br>
+        For technical inquiries, collaboration opportunities, or access to source code, please contact via email.
+    </p>
+</div>
+"""
+
+st.markdown(final_footer, unsafe_allow_html=True)
