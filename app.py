@@ -299,7 +299,7 @@ st.markdown("""
             <div class="stat-label">Startups Founded</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">4</div>
+            <div class="stat-number">6</div>
             <div class="stat-label">Production Apps</div>
         </div>
         <div class="stat-card">
@@ -373,11 +373,11 @@ with col2:
 
 st.markdown("---")
 
-st.markdown("<div class='section-header'>🌱 Research & ESG Analytics</div>", unsafe_allow_html=True)
+# ============================================
+# CATEGORY 1: ESG & SUSTAINABILITY ANALYTICS
+# ============================================
 
-# ============================================
-# ESG DASHBOARD
-# ============================================
+st.markdown("<div class='section-header'>🌱 ESG & Sustainability Analytics</div>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([3, 1])
 
@@ -408,46 +408,11 @@ with col2:
 
 st.markdown("---")
 
-st.markdown("<div class='section-header'>💼 Corporate Finance & Valuation</div>", unsafe_allow_html=True)
-
 # ============================================
-# VALUATION TOOL
+# CATEGORY 2: QUANTITATIVE FINANCE & DERIVATIVES
 # ============================================
-
-col1, col2 = st.columns([3, 1])
-
-with col1:
-    st.markdown("""
-        <div class="app-card">
-            <div class="app-icon">💰</div>
-            <div class="status-badge">✓ Production</div>
-            <div class="app-title">Corporate Valuation Screener</div>
-            <div class="app-description">
-                Advanced valuation toolkit with DCF models, comparable analysis, and scenario testing. 
-                Professional-grade fundamental analysis for corporate finance research, 
-                M&A analysis, and investment decisions.
-            </div>
-            <div style="margin-bottom: 1rem;">
-                <span class="feature-tag">💵 DCF Models</span>
-                <span class="feature-tag">📊 Multiples</span>
-                <span class="feature-tag">🎯 Scenarios</span>
-                <span class="feature-tag">📈 Benchmarks</span>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-
-with col2:
-    st.markdown("<br><br>", unsafe_allow_html=True)
-    if st.button("🚀 Launch Valuation Tool", key="valuation"):
-        st.markdown("### [Access Valuation Tool →](https://value-screeners-wvdrespkw4jjbv2m6pauva.streamlit.app/)")
-
-st.markdown("---")
 
 st.markdown("<div class='section-header'>📈 Quantitative Finance & Derivatives</div>", unsafe_allow_html=True)
-
-# ============================================
-# GEX ANALYTICS
-# ============================================
 
 col1, col2 = st.columns([3, 1])
 
@@ -460,7 +425,7 @@ with col1:
             <div class="app-description">
                 Institutional-grade Gamma Exposure (GEX) analytics, VANNA cascade mathematics, 
                 and dealer flow analysis. Advanced options analytics for market microstructure 
-                research and quantitative trading strategies.
+                research and quantitative trading strategies for NSE/BSE FNO markets.
             </div>
             <div style="margin-bottom: 1rem;">
                 <span class="feature-tag">⚡ GEX Analysis</span>
@@ -478,11 +443,107 @@ with col2:
 
 st.markdown("---")
 
-st.markdown("<div class='section-header'>📚 Academic Research Tools</div>", unsafe_allow_html=True)
+# ============================================
+# CATEGORY 3: CORPORATE FINANCE & VALUATION
+# ============================================
+
+st.markdown("<div class='section-header'>💼 Corporate Finance & Valuation Tools</div>", unsafe_allow_html=True)
+
+# App 1: Indian Markets Valuation
+col1, col2 = st.columns([3, 1])
+
+with col1:
+    st.markdown("""
+        <div class="app-card">
+            <div class="app-icon">💰</div>
+            <div class="status-badge">✓ Production</div>
+            <div class="app-title">Corporate Valuation Screener (Indian Markets)</div>
+            <div class="app-description">
+                Advanced valuation toolkit with DCF models, comparable analysis, and scenario testing 
+                for Indian equity markets. Professional-grade fundamental analysis for NSE/BSE listed companies, 
+                M&A analysis, and investment decisions.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">💵 DCF Models</span>
+                <span class="feature-tag">📊 Multiples</span>
+                <span class="feature-tag">🇮🇳 NSE/BSE</span>
+                <span class="feature-tag">📈 Benchmarks</span>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🚀 Launch Indian Screener", key="valuation_india"):
+        st.markdown("### [Access Valuation Tool →](https://value-screeners-wvdrespkw4jjbv2m6pauva.streamlit.app/)")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# App 2: US Markets Valuation
+col1, col2 = st.columns([3, 1])
+
+with col1:
+    st.markdown("""
+        <div class="app-card">
+            <div class="app-icon">🗽</div>
+            <div class="status-badge">✓ Production</div>
+            <div class="app-title">US Stock Valuation Tool</div>
+            <div class="app-description">
+                Comprehensive valuation platform for US equity markets with real-time data integration. 
+                DCF analysis, multiples valuation, and fundamental screening for NYSE, NASDAQ, and AMEX 
+                listed companies with advanced financial modeling capabilities.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">🇺🇸 US Markets</span>
+                <span class="feature-tag">📊 Real-time Data</span>
+                <span class="feature-tag">💰 DCF Models</span>
+                <span class="feature-tag">🎯 Screening</span>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🚀 Launch US Screener", key="valuation_us"):
+        st.markdown("### [Access US Tool →](https://nyztradeusstocksvaluations-dcimvmugnxty8kqsprfedp.streamlit.app/)")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# App 3: Sharia Compliant Stocks
+col1, col2 = st.columns([3, 1])
+
+with col1:
+    st.markdown("""
+        <div class="app-card">
+            <div class="app-icon">☪️</div>
+            <div class="status-badge">✓ Production</div>
+            <div class="app-title">Sharia-Compliant Value Stocks Screener</div>
+            <div class="app-description">
+                Islamic finance-focused stock screening platform with Sharia compliance verification 
+                based on AAOIFI standards. Halal stock identification, Islamic finance ratios, 
+                and value investing principles for ethical investment decisions.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">☪️ Halal Stocks</span>
+                <span class="feature-tag">📊 AAOIFI Standards</span>
+                <span class="feature-tag">💎 Value Investing</span>
+                <span class="feature-tag">🕌 Islamic Finance</span>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🚀 Launch Sharia Screener", key="sharia"):
+        st.markdown("### [Access Sharia Tool →](https://nyztrade-sharia-value-stocks-dz64ywzrizikua8ehg4gdf.streamlit.app/)")
+
+st.markdown("---")
 
 # ============================================
-# RESEARCH WRITING PRO
+# CATEGORY 4: ACADEMIC RESEARCH TOOLS
 # ============================================
+
+st.markdown("<div class='section-header'>📚 Academic Research & Writing Tools</div>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([3, 1])
 
@@ -495,7 +556,7 @@ with col1:
             <div class="app-description">
                 AI-powered academic writing assistant with grammar checking, paraphrasing, 
                 citation formatting, and plagiarism detection. Professional tool for manuscript 
-                preparation, thesis writing, and research productivity.
+                preparation, thesis writing, and research productivity enhancement.
             </div>
             <div style="margin-bottom: 1rem;">
                 <span class="feature-tag">🤖 AI Assistant</span>
