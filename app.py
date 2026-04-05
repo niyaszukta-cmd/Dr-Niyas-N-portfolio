@@ -268,6 +268,23 @@ st.markdown("""
             Institutional-grade research platforms & data analytics tools for ESG analysis, 
             corporate finance, and quantitative research — built for academics, researchers, and financial professionals.
         </div>
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://www.linkedin.com/in/drniyas/" target="_blank" style="text-decoration: none;">
+                <div style="background: linear-gradient(135deg, #0077b5 0%, #005582 100%); color: white; padding: 0.6rem 1.5rem; border-radius: 10px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3); transition: all 0.3s ease;">
+                    💼 LinkedIn
+                </div>
+            </a>
+            <a href="https://www.youtube.com/@NYZTrade" target="_blank" style="text-decoration: none;">
+                <div style="background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%); color: white; padding: 0.6rem 1.5rem; border-radius: 10px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); transition: all 0.3s ease;">
+                    ▶️ YouTube (10K+)
+                </div>
+            </a>
+            <a href="https://www.instagram.com/nyztrade/" target="_blank" style="text-decoration: none;">
+                <div style="background: linear-gradient(135deg, #E1306C 0%, #C13584 100%); color: white; padding: 0.6rem 1.5rem; border-radius: 10px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3); transition: all 0.3s ease;">
+                    📸 Instagram
+                </div>
+            </a>
+        </div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -278,23 +295,83 @@ st.markdown("""
 st.markdown("""
     <div class="stats-container">
         <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Startups Founded</div>
+        </div>
+        <div class="stat-card">
             <div class="stat-number">4</div>
             <div class="stat-label">Production Apps</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">12K+</div>
+            <div class="stat-label">Active Users</div>
         </div>
         <div class="stat-card">
             <div class="stat-number">5+</div>
             <div class="stat-label">Publications</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number">4,500+</div>
-            <div class="stat-label">Active Users</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">Real-time</div>
-            <div class="stat-label">Data Processing</div>
-        </div>
     </div>
 """, unsafe_allow_html=True)
+
+# ============================================
+# STARTUPS & VENTURES
+# ============================================
+
+st.markdown("<div class='section-header'>🚀 Startups & Ventures</div>", unsafe_allow_html=True)
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("""
+        <div class="app-card">
+            <div class="app-icon">📊</div>
+            <div class="app-title">NYZTrade Financial Solutions</div>
+            <div style="color: #a78bfa; font-weight: 600; margin-bottom: 1rem;">Founder & CEO | 2020 - Present</div>
+            <div class="app-description">
+                DPIIT-registered startup specializing in options analytics, trading tools, and AI-powered 
+                financial research platforms. Serving 10,000+ traders and researchers with institutional-grade 
+                analytics for Indian FNO markets.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">GEX Analytics</span>
+                <span class="feature-tag">Options Tools</span>
+                <span class="feature-tag">AI Research</span>
+                <span class="feature-tag">10K+ Users</span>
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.6;">
+                <strong>Products:</strong> Unified Dashboard, Premium Analytics, GEX Pro, VANNA Cascade<br>
+                <strong>Market Focus:</strong> NSE/BSE FNO Markets<br>
+                <strong>Revenue Model:</strong> Subscription-based SaaS Platform
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
+        <div class="app-card">
+            <div class="app-icon">🔬</div>
+            <div class="app-title">Zodha Research Solutions</div>
+            <div style="color: #a78bfa; font-weight: 600; margin-bottom: 1rem;">Director of Research | 2021 - Present</div>
+            <div class="app-description">
+                Research consultancy providing quantitative analysis, academic writing tools, and 
+                data-driven insights for scholars, institutions, and businesses. Empowering 2,000+ 
+                researchers with AI-powered academic productivity tools.
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <span class="feature-tag">Research Tools</span>
+                <span class="feature-tag">AI Writing</span>
+                <span class="feature-tag">Data Analytics</span>
+                <span class="feature-tag">2K+ Users</span>
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.6;">
+                <strong>Services:</strong> Research Writing Pro, Statistical Consulting, Data Analysis<br>
+                <strong>Clients:</strong> PhD Scholars, Academic Institutions, Research Organizations<br>
+                <strong>Specialization:</strong> Quantitative Research & Academic Writing
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("---")
 
 st.markdown("<div class='section-header'>🌱 Research & ESG Analytics</div>", unsafe_allow_html=True)
 
@@ -512,7 +589,7 @@ st.markdown("""
 
 st.markdown("<div class='section-header'>📬 Get in Touch</div>", unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.markdown("""
@@ -535,9 +612,18 @@ with col2:
 with col3:
     st.markdown("""
         <div class="contact-card">
-            <div class="contact-icon">🎓</div>
-            <div class="contact-text">Institution</div>
-            <div class="contact-detail">Pondicherry Central University</div>
+            <div class="contact-icon">💼</div>
+            <div class="contact-text">LinkedIn</div>
+            <div class="contact-detail"><a href="https://www.linkedin.com/in/drniyas/" target="_blank" style="color: #a78bfa; text-decoration: none;">@drniyas</a></div>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col4:
+    st.markdown("""
+        <div class="contact-card">
+            <div class="contact-icon">▶️</div>
+            <div class="contact-text">YouTube</div>
+            <div class="contact-detail"><a href="https://www.youtube.com/@NYZTrade" target="_blank" style="color: #a78bfa; text-decoration: none;">10K+ Subscribers</a></div>
         </div>
     """, unsafe_allow_html=True)
 
@@ -549,10 +635,28 @@ st.markdown("<br><br>", unsafe_allow_html=True)
 
 st.markdown(f"""
     <div style='text-align: center; color: rgba(255, 255, 255, 0.6); padding: 2rem 0; font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.1);'>
-        <p style='margin-bottom: 0.5rem;'><strong style='color: rgba(255, 255, 255, 0.9);'>Dr. Niyas N</strong> | Ph.D. in Corporate Finance</p>
-        <p style='margin-bottom: 0.5rem;'>Research Portfolio & Data Analytics Platforms</p>
-        <p style='margin-bottom: 1rem;'>Last Updated: {datetime.now().strftime('%B %Y')}</p>
-        <p style='font-size: 0.85rem;'>
+        <p style='margin-bottom: 0.5rem;'><strong style='color: rgba(255, 255, 255, 0.9); font-size: 1.2rem;'>Dr. Niyas N</strong></p>
+        <p style='margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.8);'>Ph.D. in Corporate Finance | Founder, NYZTrade & Zodha Research</p>
+        <p style='margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.7);'>Pondicherry Central University, India</p>
+        
+        <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+            <a href="https://www.linkedin.com/in/drniyas/" target="_blank" style="color: #a78bfa; text-decoration: none; font-weight: 600;">
+                💼 LinkedIn
+            </a>
+            <a href="https://www.youtube.com/@NYZTrade" target="_blank" style="color: #a78bfa; text-decoration: none; font-weight: 600;">
+                ▶️ YouTube (10K+)
+            </a>
+            <a href="https://www.instagram.com/nyztrade/" target="_blank" style="color: #a78bfa; text-decoration: none; font-weight: 600;">
+                📸 Instagram
+            </a>
+            <a href="mailto:niyaszukta@gmail.com" style="color: #a78bfa; text-decoration: none; font-weight: 600;">
+                📧 Email
+            </a>
+        </div>
+        
+        <p style='margin-bottom: 0.5rem; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);'>Research Portfolio & Data Analytics Platforms</p>
+        <p style='margin-bottom: 1rem; font-size: 0.85rem;'>Last Updated: {datetime.now().strftime('%B %Y')}</p>
+        <p style='font-size: 0.85rem; color: rgba(255, 255, 255, 0.6);'>
             All applications are production-ready and actively maintained.<br>
             For technical inquiries, collaboration opportunities, or access to source code, please contact via email.
         </p>
